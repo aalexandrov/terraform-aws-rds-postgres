@@ -24,7 +24,8 @@ Before using this module, you must have the following:
     Access the Materialize instance and run the following query:
 
     ```sql
-    SELECT '[' || string_agg( '"' || egress_ip || '/32' || '"', ', ') || ']' as egress_ip_array FROM mz_egress_ips;
+    SELECT '[' || string_agg( '"' || egress_ip || '/32' || '"', ', ') || ']' as egress_ip_array
+        FROM mz_egress_ips;
     ```
 
     The query above will return a JSON array of egress IP addresses. Define the following variable in your `terraform.tfvars` file:
@@ -38,7 +39,7 @@ Before using this module, you must have the following:
 1. Clone the repository:
 
     ```bash
-    git clone TBG
+    git clone https://github.com/bobbyiliev/terraform-materialize-rds.git
     ```
 
 2. Copy the `terraform.tfvars.example` file to `terraform.tfvars` and fill in the variables:

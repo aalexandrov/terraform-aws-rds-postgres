@@ -108,7 +108,7 @@ Before using this module, you must have the following:
     SELECT * FROM test_table;
 ```
 
-## Helpfull links
+## Helpful links
 
 - [Materialize](https://materialize.com/)
 - [Postgres Connection](https://materialize.com/docs/sql/create-connection/#postgres)

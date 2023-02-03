@@ -29,7 +29,7 @@ resource "aws_security_group" "mz_rds_demo_sg" {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = concat(var.mz_egress_ips, [format("%s/%s", data.http.user_public_ip.response_body, "32")])
+    cidr_blocks = distinct(concat(var.mz_egress_ips, [format("%s/%s", data.http.user_public_ip.response_body, "32")]))
   }
   egress {
     from_port   = 5432

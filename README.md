@@ -13,6 +13,13 @@ This module will create the following resources:
 - RDS Postgres instance
 - RDS Parameter Group for RDS Postgres instance to enable logical replication
 
+To override the default AWS provider variables, you can export the following environment variables:
+
+```bash
+export AWS_PROFILE=<your_aws_profile> # eg. default
+export AWS_CONFIG_FILE=<your_aws_config_file> # eg. ["~/.aws/config"]
+```
+
 ## Prerequisites
 
 Before using this module, you must have the following:

@@ -4,6 +4,8 @@ Terraform module for deploying a new RDS Postgres instance and connecting it to 
 
 For the manual setup, see the [Materialize + RDS](https://materialize.com/docs/integrations/cdc-postgres/#direct-postgres-source) documentation.
 
+> **Warning** This is provided on a best-effort basis and Materialize cannot offer support for this module.
+
 ## Overview
 
 This module will create the following resources:
@@ -115,8 +117,13 @@ Before using this module, you must have the following:
     SELECT * FROM test_table;
 ```
 
+## Security
+
+The RDS instance is publicly accessible, but the module creates a security group that allows inbound traffic from the Materialize egress IPs and the user's IP address on port 5432.
+
 ## Helpful links
 
 - [Materialize](https://materialize.com/)
 - [Postgres Connection](https://materialize.com/docs/sql/create-connection/#postgres)
 - [Postgres CDC](https://materialize.com/docs/integrations/cdc-postgres/)
+- [Materialize Terraform Provider](https://github.com/MaterializeInc/terraform-provider-materialize)

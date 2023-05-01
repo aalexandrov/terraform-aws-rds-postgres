@@ -121,6 +121,8 @@ Before using this module, you must have the following:
 
 The RDS instance is publicly accessible, but the module creates a security group that allows inbound traffic from the Materialize egress IPs and the user's IP address on port 5432.
 
+If you create a Materialize source from the RDS instance and leave the RDS instance idle for a long time, the replication slot might grow in size. If left unchecked a replication slot in an inactive state can consume all your disk space. To avoid this, add alarms on the RDS metric `TransactionLogsDiskUsage` and `OldestReplicationSlotLag` to alert you when the transaction logs disk usage increased above a threshold or when a replication slot started lagging.
+
 ## Helpful links
 
 - [Materialize](https://materialize.com/)

@@ -45,25 +45,28 @@ Before using this module, you must have the following:
 
 ## Running the module
 
-1. Clone the repository:
+### Variables
 
-    ```bash
-    git clone https://github.com/bobbyiliev/terraform-materialize-rds.git
-    ```
+Copy the `terraform.tfvars.example` file to `terraform.tfvars` and fill in the variables:
 
-2. Copy the `terraform.tfvars.example` file to `terraform.tfvars` and fill in the variables:
+```bash
+cp terraform.tfvars.example terraform.tfvars
+```
 
-    ```bash
-    cp terraform.tfvars.example terraform.tfvars
-    ```
+| Name | Description | Type | Example | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| mz_egress_ips | Materialize instance egress IP addresses | list(string) | ["123.456.789.0/32", "123.456.789.1/32"] | yes |
+| publicly_accessible | Whether the RDS instance is publicly accessible | bool | true | no |
 
-3. Add the Materialize instance egress IP addresses to the `mz_egress_ips` variable in `terraform.tfvars`:
+### Apply the Terraform Module
+
+1. Add the Materialize instance egress IP addresses to the `mz_egress_ips` variable in `terraform.tfvars`:
 
     ```bash
     mz_egress_ips = ["123.456.789.0/32", "123.456.789.1/32"]
     ```
 
-4. Apply the Terraform configuration:
+1. Apply the Terraform configuration:
 
     ```bash
     terraform apply
@@ -71,7 +74,7 @@ Before using this module, you must have the following:
 
     Once you run the command, it might take a few minutes for the RDS instance to be created.
 
-5. Check the output:
+1. Check the output:
 
     ```bash
     terraform output -raw mz_rds_details

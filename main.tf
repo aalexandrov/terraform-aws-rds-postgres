@@ -69,8 +69,8 @@ resource "aws_db_instance" "mz_rds_demo_db" {
   vpc_security_group_ids = [aws_security_group.mz_rds_demo_sg.id]
   parameter_group_name   = aws_db_parameter_group.mz_rds_demo_pg.name
   apply_immediately      = true
-  # Publicly accessible for demo purposes
-  publicly_accessible  = true
+  # Publicly accessible by default for demo purposes
+  publicly_accessible  = var.publicly_accessible
   skip_final_snapshot  = true
   db_subnet_group_name = aws_db_subnet_group.mz_rds_demo_db_subnet_group.name
 }

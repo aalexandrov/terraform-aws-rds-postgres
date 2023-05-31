@@ -33,8 +33,7 @@ Before using this module, you must have the following:
     Access the Materialize instance and run the following query:
 
     ```sql
-    SELECT '[' || string_agg( '"' || egress_ip || '/32' || '"', ', ') || ']' as egress_ip_array
-        FROM mz_egress_ips;
+    SELECT jsonb_agg(egress_ip || '/32') egress_cidrs FROM mz_egress_ips;
     ```
 
     The query above will return a JSON array of egress IP addresses. Define the following variable in your `terraform.tfvars` file:
@@ -53,10 +52,11 @@ Copy the `terraform.tfvars.example` file to `terraform.tfvars` and fill in the v
 cp terraform.tfvars.example terraform.tfvars
 ```
 
-| Name | Description | Type | Example | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| mz_egress_ips | Materialize instance egress IP addresses | list(string) | ["123.456.789.0/32", "123.456.789.1/32"] | yes |
-| publicly_accessible | Whether the RDS instance is publicly accessible | bool | true | no |
+| Name                  | Description                              | Type         | Example                                    | Required |
+|-----------------------|------------------------------------------|:------------:|:------------------------------------------:|:--------:|
+| `mz_egress_ips`       | Materialize instance egress IP addresses | list(string) | `["123.456.789.0/32", "123.456.789.1/32"]` | yes      |
+| `publicly_accessible` | Whether the RDS is publicly accessible   | `bool`       | true                                       | no       |
+| `rds_instance_name`   | The name of the RDS instance             | string       | `mz-rds-demo-db`                           | no       |
 
 ### Apply the Terraform Module
 

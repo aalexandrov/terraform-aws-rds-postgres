@@ -17,3 +17,10 @@ variable "publicly_accessible" {
   type        = bool
   default     = false
 }
+
+# Name of the RDS instance
+variable "rds_instance_name" {
+  description = "Name of the RDS instance"
+  type        = string
+  default     = "mz-rds-demo-pg"
+}

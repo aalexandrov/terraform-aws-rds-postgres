@@ -3,3 +3,6 @@ aws_region = "us-east-1"
 
 # Get the Materialize Egress IPs, eg. `SELECT * FROM mz_egress_ips;`
 mz_egress_ips=[""]
+
+# The name of the RDS instance to be created.
+rds_instance_name = "mz-rds-demo-pg"

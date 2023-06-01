@@ -15,7 +15,7 @@ variable "mz_egress_ips" {
 variable "publicly_accessible" {
   description = "Whether the RDS instance is publicly accessible or not"
   type        = bool
-  default     = false
+  default     = true
 }
 
 # Name of the RDS instance

@@ -15,12 +15,11 @@ variable "mz_egress_ips" {
 variable "publicly_accessible" {
   description = "Whether the RDS instance is publicly accessible or not"
   type        = bool
-  default     = false
+  default     = true
 }
 
 # Name of the RDS instance
 variable "rds_instance_name" {
-  description = "Name of the RDS instance"
+  description = "The name of the RDS instance"
   type        = string
-  default     = "mz-rds-demo-pg"
 }

@@ -55,8 +55,8 @@ cp terraform.tfvars.example terraform.tfvars
 | Name                  | Description                              | Type         | Example                                    | Required |
 |-----------------------|------------------------------------------|:------------:|:------------------------------------------:|:--------:|
 | `mz_egress_ips`       | Materialize instance egress IP addresses | list(string) | `["123.456.789.0/32", "123.456.789.1/32"]` | yes      |
+| `rds_instance_name`   | The name of the RDS instance             | string       | `mz-rds-demo-db`                           | yes      |
 | `publicly_accessible` | Whether the RDS is publicly accessible   | `bool`       | true                                       | no       |
-| `rds_instance_name`   | The name of the RDS instance             | string       | `mz-rds-demo-db`                           | no       |
 
 ### Apply the Terraform Module
 

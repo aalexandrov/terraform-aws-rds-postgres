@@ -2,7 +2,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.19.0"
 
-  name                 = "mz_rds_demo_vpc"
+  name                 = "${var.rds_instance_name}-vpc"
   cidr                 = "10.0.0.0/16"
   azs                  = data.aws_availability_zones.available.names
   public_subnets       = ["10.0.4.0/24", "10.0.5.0/24"]
@@ -11,7 +11,7 @@ module "vpc" {
 }
 
 resource "aws_db_subnet_group" "mz_rds_demo_db_subnet_group" {
-  name       = "mz_rds_demo_db_subnet_group"
+  name       = "${var.rds_instance_name}-db-subnet-group"
   subnet_ids = module.vpc.public_subnets
 
   tags = {
@@ -20,7 +20,7 @@ resource "aws_db_subnet_group" "mz_rds_demo_db_subnet_group" {
 }
 
 resource "aws_security_group" "mz_rds_demo_sg" {
-  name        = "mz_rds_demo_vpc"
+  name        = "${var.rds_instance_name}-sg"
   description = "Materialize RDS Terraform demo"
   vpc_id      = module.vpc.vpc_id
 
@@ -58,7 +58,7 @@ resource "aws_db_parameter_group" "mz_rds_demo_pg" {
 }
 
 resource "aws_db_instance" "mz_rds_demo_db" {
-  identifier             = "mz-rds-demo-db"
+  identifier             = var.rds_instance_name
   allocated_storage      = 20
   engine                 = "postgres"
   engine_version         = "13"

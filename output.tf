@@ -1,3 +1,7 @@
+output "rds_instance" {
+  value = aws_db_instance.mz_rds_demo_db
+}
+
 output "mz_rds_details" {
   sensitive = true
   value     = <<EOF

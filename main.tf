@@ -61,8 +61,8 @@ resource "aws_db_instance" "mz_rds_demo_db" {
   identifier             = var.rds_instance_name
   allocated_storage      = 20
   engine                 = "postgres"
-  engine_version         = "13"
-  instance_class         = "db.m5.large"
+  engine_version         = var.engine_version
+  instance_class         = var.rds_instance_class
   db_name                = "materialize"
   username               = "materialize"
   password               = random_string.mz_rds_demo_db_password.result

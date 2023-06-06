@@ -23,3 +23,17 @@ variable "rds_instance_name" {
   description = "The name of the RDS instance"
   type        = string
 }
+
+# RDS instance size
+variable "rds_instance_class" {
+  description = "The size of the RDS instance"
+  type        = string
+  default     = "db.m5.large"
+}
+
+# RDS instance engine version
+variable "engine_version" {
+  description = "The engine version of the RDS instance"
+  type        = string
+  default     = "14"
+}

@@ -48,7 +48,7 @@ resource "random_string" "mz_rds_demo_db_password" {
 
 resource "aws_db_parameter_group" "mz_rds_demo_pg" {
   name   = var.rds_instance_name
-  family = "postgres13"
+  family = "postgres${var.engine_version}"
 
   parameter {
     name         = "rds.logical_replication"
